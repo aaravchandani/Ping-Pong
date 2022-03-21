@@ -9,6 +9,15 @@
 .big_image{
     width: 100%;
 }
-#start{
+#start,#restart{
     font-size: 22px;
 }
+.copy_right_footer{
+    position: fixed;
+    color: silver;
+    bottom: 0;
+    width: 100%;
+    background-color:darkcyan;
+    line-height: 3;
+    text-align: center;
+    }
