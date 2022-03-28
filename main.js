@@ -1,8 +1,9 @@
 
 /*created by prashant shukla */
 img = ""
-noseX=""
-noseY=""
+rightwristX=0
+rightwristY=0
+scorerightwrist=0
 var paddle2 =10,paddle1=10;
 
 var paddle1X = 10,paddle1Height = 110;
@@ -34,17 +35,17 @@ canvas.parent('canvas');
 
 video = createCapture(VIDEO);
 video.size(700, 600);
-video.hide();
-
+video.hide()
 poseNet = ml5.poseNet(video, modelLoaded);
 poseNet.on('pose', gotPoses);
 }
 
 function gotPoses(results){
 	if(results.length>0){
-		noseX = results[0].pose.nose.x;
-		noseY = results[0].pose.nose.y;
-		console.log("noseX = "+noseX+", noseY = "+ noseY)
+		rightwristX = results[0].pose.rightWrist.x;
+		rightwristY = results[0].pose.rightWrist.y;
+		scorerightwrist = results[0].pose.keypoints[10].score
+    console.log(scorerightwrist)
 	}
 }
 
@@ -53,7 +54,11 @@ function modelLoaded(){
 }
 
 function draw(){
-	
+	if(scorerightwrist > 0.2){
+    fill("red");
+    stroke("red")
+    circle(rightwristX,rightwristY,30)
+  }
 	
  background(0); 
 
