@@ -4,6 +4,7 @@ img = ""
 rightwristX=0
 rightwristY=0
 scorerightwrist=0
+game_status = ""
 var paddle2 =10,paddle1=10;
 
 var paddle1X = 10,paddle1Height = 110;
@@ -52,14 +53,20 @@ function gotPoses(results){
 function modelLoaded(){
   console.log('Model Loaded!');
 }
+function startGame(){
+  game_status = "start"
+  document.getElementById("status").innerHTML = "Game is Loaded"
 
+}
 function draw(){
 	if(scorerightwrist > 0.2){
     fill("red");
     stroke("red")
     circle(rightwristX,rightwristY,30)
   }
-	
+	if(game_status == "start"){
+    
+  }
  background(0); 
 
  fill("black");
